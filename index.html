@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>香港四天三夜攻略 2026.03.28-03.31</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Noto Sans TC', -apple-system, sans-serif;
+  background: #0D1117;
+  color: #E6E6E6;
+  min-height: 100vh;
+}
+.wrap { max-width: 720px; margin: 0 auto; }
+
+/* Hero */
+.hero {
+  position: relative; padding: 36px 24px 24px;
+  background: linear-gradient(180deg, #1a1a2e 0%, #0D1117 100%);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: -40px; right: -40px;
+  width: 160px; height: 160px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,77,77,0.15) 0%, transparent 70%);
+}
+.hero::after {
+  content: ''; position: absolute; bottom: -30px; left: -30px;
+  width: 120px; height: 120px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,184,48,0.1) 0%, transparent 70%);
+}
+.hero-inner { position: relative; max-width: 720px; margin: 0 auto; }
+.hero-tag {
+  display: inline-block; font-size: 10px; font-weight: 700;
+  letter-spacing: 3px; color: #FF4D4D; text-transform: uppercase;
+  border-bottom: 1px solid #FF4D4D44; padding-bottom: 4px; margin-bottom: 12px;
+}
+.hero h1 { font-size: 30px; font-weight: 900; line-height: 1.25; color: #FAFAFA; }
+.hero h1 span { color: #FFB830; }
+.hero-meta { display: flex; gap: 20px; margin-top: 14px; flex-wrap: wrap; }
+.hero-meta div { display: flex; align-items: center; gap: 5px; font-size: 12px; color: #8B8FA3; }
+
+/* Day Tabs */
+.day-tabs {
+  display: flex; gap: 8px; padding: 16px 16px 8px;
+  overflow-x: auto; scrollbar-width: none;
+}
+.day-tabs::-webkit-scrollbar { display: none; }
+.day-tab {
+  flex: 1 0 0; min-width: 80px; padding: 12px 10px 10px;
+  border-radius: 12px; border: 1.5px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02); color: #555;
+  cursor: pointer; transition: all 0.25s ease; text-align: center;
+  position: relative; overflow: hidden; font-family: inherit;
+}
+.day-tab.active { color: #fff; }
+.day-tab .bar { position: absolute; top: 0; left: 0; right: 0; height: 2px; display: none; }
+.day-tab.active .bar { display: block; }
+.day-tab .ico { font-size: 20px; margin-bottom: 2px; }
+.day-tab .label { font-size: 11px; font-weight: 700; letter-spacing: 1px; }
+.day-tab .sub { font-size: 10px; opacity: 0.7; margin-top: 1px; }
+
+/* Day Header */
+.day-header {
+  padding: 14px 20px; margin: 8px 16px 0; border-radius: 10px;
+  border-left: 3px solid; font-size: 17px; font-weight: 700; line-height: 1.4;
+}
+
+/* Timeline */
+.timeline { padding: 16px 16px 8px; }
+.tl-row { display: flex; gap: 12px; margin-bottom: 2px; }
+.tl-left { display: flex; flex-direction: column; align-items: center; width: 50px; flex-shrink: 0; }
+.tl-time { font-size: 11px; font-weight: 600; color: #6B7280; margin-bottom: 4px; font-variant-numeric: tabular-nums; }
+.tl-dot {
+  width: 32px; height: 32px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; flex-shrink: 0;
+}
+.tl-line { width: 1.5px; flex: 1; min-height: 6px; }
+.tl-card {
+  flex: 1; cursor: pointer; background: rgba(255,255,255,0.03);
+  border-radius: 10px; padding: 10px 14px; margin-bottom: 8px;
+  border: 1px solid rgba(255,255,255,0.04); transition: background 0.2s;
+}
+.tl-card:hover { background: rgba(255,255,255,0.055); }
+.tl-card-head { display: flex; justify-content: space-between; align-items: flex-start; }
+.tl-badge {
+  display: inline-block; font-size: 9px; font-weight: 700;
+  padding: 1px 6px 2px; border-radius: 4px; margin-bottom: 4px; letter-spacing: 0.5px;
+}
+.tl-card h3 { font-size: 14px; font-weight: 600; margin: 3px 0 0; color: #E8E8EC; line-height: 1.4; }
+.tl-arrow {
+  font-size: 8px; color: #444; margin-left: 8px; margin-top: 4px;
+  transition: transform 0.2s; flex-shrink: 0;
+}
+.tl-arrow.up { transform: rotate(-90deg); }
+.tl-desc { font-size: 12px; line-height: 1.65; color: #8B8FA3; margin: 6px 0 0; }
+.tl-body { display: block; }
+.tl-body.hidden { display: none; }
+
+/* Restaurant cards */
+.rest-list { margin-top: 8px; display: flex; flex-direction: column; gap: 6px; }
+.rest-card {
+  background: rgba(255,255,255,0.04); border-radius: 8px;
+  padding: 8px 10px; border-left: 3px solid rgba(255,255,255,0.08);
+}
+.rest-card.sjb { border-left-color: #FF6B35; }
+.rest-head { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.rest-name { font-size: 12px; font-weight: 700; color: #E8E8EC; }
+.rest-tag {
+  font-size: 9px; font-weight: 700; padding: 1px 6px; border-radius: 4px;
+  background: rgba(255,184,48,0.15); color: #FFB830;
+  border: 1px solid rgba(255,184,48,0.2);
+}
+.rest-tag.sjb {
+  background: rgba(255,107,53,0.2); color: #FF8A50;
+  border-color: rgba(255,107,53,0.3);
+}
+.rest-note { font-size: 10px; color: #7B7F93; line-height: 1.5; margin-top: 3px; }
+
+/* Tips */
+.tips-box {
+  margin: 8px 16px 20px; padding: 20px 16px;
+  background: rgba(255,255,255,0.02); border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.tips-title { font-size: 15px; font-weight: 700; margin-bottom: 14px; color: #FFB830; text-align: center; letter-spacing: 1px; }
+.tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.tip-card {
+  background: rgba(255,255,255,0.03); border-radius: 10px;
+  padding: 12px 10px; border: 1px solid rgba(255,255,255,0.04);
+}
+.tip-card .ico { font-size: 20px; margin-bottom: 6px; }
+.tip-card .t { font-size: 12px; font-weight: 700; color: #D4D4DC; margin-bottom: 3px; }
+.tip-card .d { font-size: 11px; color: #6B7280; line-height: 1.55; }
+
+.footer { text-align: center; padding: 12px 20px 28px; font-size: 11px; color: #3A3A4A; }
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 24px; }
+  .hero-meta { gap: 10px; }
+  .day-tab { min-width: 70px; padding: 10px 6px 8px; }
+  .tips-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">FIRST TRIP TO HONG KONG</div>
+    <h1>香港四天三夜<br><span>美食 × 景點攻略</span></h1>
+    <div class="hero-meta">
+      <div>📅 2026.03.28 — 03.31</div>
+      <div>✈️ 國泰 CX489 / CX402</div>
+      <div>🏨 The Stellar・北角</div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <!-- Day Tabs -->
+  <div class="day-tabs" id="dayTabs"></div>
+  <!-- Day Header -->
+  <div class="day-header" id="dayHeader"></div>
+  <!-- Timeline -->
+  <div class="timeline" id="timeline"></div>
+  <!-- Tips -->
+  <div class="tips-box">
+    <div class="tips-title">📌 行前小提醒</div>
+    <div class="tips-grid" id="tipsGrid"></div>
+  </div>
+  <div class="footer">祝你香港之旅玩得開心！🇭🇰✨</div>
+</div>
+
+<script>
+const DAYS=[
+{date:"3/28 (六)",title:"抵達香港・北角在地風味・維港夜景",color:"#FF4D4D",icon:"✈️",items:[
+{time:"10:45",title:"桃園機場出發",desc:"國泰航空 CX489，TPE → HKG",type:"transport",icon:"✈️"},
+{time:"13:00",title:"抵達香港國際機場",desc:"入境後搭機場快線到香港站（約24分鐘），轉港島線到炮台山站/北角站",type:"transport",icon:"🚄"},
+{time:"14:30",title:"Check-in The Stellar Hotel",desc:"📍 北角春秧街68號，炮台山站B出口步行約5分鐘。放好行李稍作休息",type:"hotel",icon:"🏨"},
+{time:"15:00",title:"春秧街市集散步",desc:"飯店樓下就是春秧街！電車穿越市集的經典香港畫面就在這裡，邊走邊感受最道地的北角市井氣息",type:"activity",icon:"🎭"},
+{time:"15:30",title:"北角下午茶巡禮",desc:"這區美食超密集！推薦組合：",type:"food",icon:"🥚",restaurants:[
+{name:"媽咪雞蛋仔（北角店）",tag:"米其林推薦",note:"連續五年米其林推薦，外酥內軟，原味、朱古力都讚"},
+{name:"麥記美食",tag:"🔥 生煎包",note:"北角在地米其林小店，傳統厚皮生煎包，一口一個超滿足！就在飯店附近",sjb:true},
+{name:"德如茶餐廳 / 新釗記",tag:"茶餐廳",note:"來杯絲襪奶茶＋菠蘿油，體驗最日常的港式下午茶"}
+]},
+{time:"17:00",title:"搭叮叮車前往銅鑼灣",desc:"從北角搭電車慢慢晃到銅鑼灣，沿途感受港島老街風情，車費只要HK$3！",type:"transport",icon:"🚃"},
+{time:"17:30",title:"銅鑼灣逛街＋蛋撻",desc:"時代廣場、SOGO百貨感受購物氣氛，順路吃個蛋撻：",type:"activity",icon:"🛍️",restaurants:[
+{name:"Bakehouse（銅鑼灣店）",tag:"神級蛋撻",note:"號稱香港最強酥皮蛋撻，銅鑼灣店人較少不用排太久"},
+{name:"Hashtag B",tag:"花朵蛋撻",note:"千層花朵造型蛋撻，比Bakehouse大顆，適合帶回台灣當伴手禮"}
+]},
+{time:"19:00",title:"第一頓香港大餐",desc:"銅鑼灣晚餐，幾間選一：",type:"food",icon:"🦀",restaurants:[
+{name:"橋底辣蟹",tag:"避風塘炒蟹",note:"📍 駱克道391號。蒜酥配辣蟹超銷魂，記得訂位！人均HK$300-500"},
+{name:"何洪記粥麵專家",tag:"米其林一星",note:"📍 霎東街。招牌鮮蝦雲吞麵＋及第粥，價格親民的米其林"},
+{name:"強記美食",tag:"在地排檔",note:"銅鑼灣人氣大排檔，避風塘系列，比橋底辣蟹平價"}
+]},
+{time:"21:00",title:"尖沙咀・維多利亞港夜景 🌃",desc:"搭港鐵到尖沙咀（約15分鐘），到星光大道欣賞維多利亞港百萬夜景！對岸港島高樓燈火璀璨，第一次來香港必看",type:"highlight",icon:"🌃"},
+{time:"22:30",title:"回飯店休息",desc:"尖沙咀搭港鐵荃灣線到金鐘站，轉港島線回炮台山站",type:"transport",icon:"🏠"}
+]},
+
+{date:"3/29 (日)",title:"經典港島一日・太平山・中環上環美食巡禮",color:"#FFB830",icon:"🏔️",items:[
+{time:"08:00",title:"港式早餐",desc:"先吃飽再出發！",type:"food",icon:"🍳",restaurants:[
+{name:"華星冰室（灣仔店）",tag:"明星愛店",note:"必點黑松露炒蛋多士＋凍鴛鴦奶茶，陳奕迅、楊千嬅也常來"},
+{name:"金華冰廳",tag:"全港最強菠蘿包",note:"📍 太子弼街。菠蘿包外酥內軟一絕，蛋撻也是港人心頭好"},
+{name:"華嫂冰室",tag:"菠蘿油名店",note:"灣仔老店，冰火菠蘿油＋奶茶超經典"}
+]},
+{time:"09:30",title:"中環半山手扶梯",desc:"全世界最長的戶外有蓋手扶梯系統！沿途經過 SOHO 區，充滿文青小店和塗鴉藝術牆",type:"activity",icon:"🎨"},
+{time:"10:00",title:"大館 Tai Kwun",desc:"前中區警署建築群，現在是藝術文化中心。免費入場，復古殖民建築超好拍",type:"highlight",icon:"🏛️"},
+{time:"11:30",title:"中環午餐＋生煎包",desc:"中環美食密度超高，以下幾家可以混搭著吃：",type:"food",icon:"🦆",restaurants:[
+{name:"祥興記上海生煎包（中環店）",tag:"🔥 生煎包必吃",note:"📍 擺花街。米其林推薦！皮薄底脆爆汁，招牌＋鮮蝦口味都必點。跟蘭芳園只隔一分鐘",sjb:true},
+{name:"一樂燒鵝",tag:"米其林推薦",note:"📍 士丹利街34號。燒鵝皮脆肉嫩，香港燒鵝代表"},
+{name:"沾仔記",tag:"雲吞麵",note:"中環排隊名店，三寶麵（雲吞＋水餃＋魚蛋）一次滿足"},
+{name:"九記牛腩",tag:"老字號",note:"📍 上環歌賦街。清湯牛腩伊麵濃郁帶甜，牛腩燉到軟爛"}
+]},
+{time:"12:30",title:"甜點散步",desc:"吃完正餐來點甜的，都在中環走路範圍：",type:"food",icon:"🥧",restaurants:[
+{name:"泰昌蛋撻（中環擺花街）",tag:"60年老店",note:"港人心中的經典蛋撻，塔皮酥鬆、內餡蛋奶香濃郁"},
+{name:"蘭芳園",tag:"絲襪奶茶始祖",note:"📍 結志街。1952年開業，港式奶茶的代名詞"},
+{name:"Vission Bakery",tag:"抹茶控必去",note:"中環站旁，抹茶蛋撻和甜點都超出色"}
+]},
+{time:"13:30",title:"上環漫步",desc:"PMQ 元創方 → 荷李活道（古董店＋藝廊）→ 文武廟。途中可以吃：",type:"activity",icon:"🎭",restaurants:[
+{name:"生記粥品",tag:"老字號粥店",note:"上環必吃，及第粥、魚片粥都是招牌，粥底綿密"}
+]},
+{time:"15:00",title:"太平山頂 🏔️",desc:"搭山頂纜車上太平山！建議買「山頂纜車+凌霄閣摩天台428」套票。第一次來香港的必訪！",type:"highlight",icon:"🏔️"},
+{time:"17:00",title:"山頂看日落",desc:"三月底日落約18:20，在山頂等待華燈初上超浪漫。天氣好可以看到整個維港",type:"highlight",icon:"🌅"},
+{time:"18:30",title:"下山前往灣仔",desc:"搭纜車下山後轉乘港鐵或巴士前往灣仔",type:"transport",icon:"🚌"},
+{time:"19:00",title:"灣仔晚餐",desc:"灣仔是美食重鎮：",type:"food",icon:"🍖",restaurants:[
+{name:"甘牌燒鵝",tag:"米其林一星",note:"📍 皇后大道東18號。連續多年一星！必點1/4隻燒鵝＋叉燒"},
+{name:"再興燒臘飯店",tag:"CNN推薦",note:"CNN譽為「叉燒的同義詞」，清光緒年間開到現在"},
+{name:"靠得住粥麵小館",tag:"米其林推薦",note:"招牌鮮蝦雲吞用料紮實"},
+{name:"車仔麵之家",tag:"在地小吃",note:"港式車仔麵，自選配料超好玩"}
+]},
+{time:"20:30",title:"宵夜甜品",desc:"吃完正餐再來一波：",type:"food",icon:"🍮",restaurants:[
+{name:"佳佳甜品",tag:"米其林必比登",note:"📍 佐敦寧波街29號。芝麻糊、杏仁露必點"},
+{name:"義順牛奶公司",tag:"雙皮奶",note:"銅鑼灣或佐敦都有，燉奶和雙皮奶超滑嫩"}
+]},
+{time:"21:30",title:"回飯店休息",desc:"搭港鐵回炮台山，養精蓄銳準備明天的迪士尼！",type:"transport",icon:"🏠"}
+]},
+
+{date:"3/30 (一)",title:"香港迪士尼樂園・20週年慶典",color:"#4DD0E1",icon:"🏰",items:[
+{time:"08:00",title:"早起出發！",desc:"炮台山站 → 香港站 → 東涌線到欣澳 → 迪士尼線，全程約50分鐘",type:"transport",icon:"🚇"},
+{time:"09:00",title:"提早入園！（比正式開園早1小時）",desc:"你有提早入園證！直衝「魔雪奇緣世界」，趁人少狂玩＋拍空景照片！",type:"highlight",icon:"❄️"},
+{time:"09:15",title:"魔雪奇幻之旅 + 雪嶺滑雪橇",desc:"全球首座冰雪奇緣主題園區！提早入園這兩個設施幾乎不用排隊。友誼噴泉和國王橋是必拍打卡點",type:"highlight",icon:"⛷️"},
+{time:"10:00",title:"正式開園後衝反斗奇兵大本營",desc:"開園時間一到管制解除，轉轉彈弓狗、沖天遙控車，人潮還沒湧入前先搶玩",type:"activity",icon:"🚀"},
+{time:"11:00",title:"灰熊山極速礦車 + 迷離大宅",desc:"兩個香港迪士尼獨有園區！灰熊山礦車刺激好玩，迷離大宅故事氛圍超棒",type:"activity",icon:"🐻"},
+{time:"12:00",title:"園區午餐",desc:"園區內用餐選擇：",type:"food",icon:"🍔",restaurants:[
+{name:"阿德爾皇家宴會廳",tag:"冰雪奇緣主題",note:"冰雪奇緣園區內，氛圍滿分。建議先用KKday/Klook買餐券較划算"},
+{name:"河景餐廳",tag:"美式料理",note:"美國小鎮大街，烤肋排和漢堡比較吃得飽"},
+{name:"火箭餐廳",tag:"平價快餐",note:"明日世界內，衛星造型，炸雞套餐適合趕時間"}
+]},
+{time:"13:00",title:"鐵甲奇俠飛行之旅（鋼鐵人）",desc:"全球首個漫威主題遊樂設施，排隊區就是史塔克科技博覽會，好拍又好玩",type:"activity",icon:"🦸"},
+{time:"14:00",title:"幻想世界：小熊維尼 + 小小世界",desc:"經典迪士尼設施，小小世界的各國風情很療癒",type:"activity",icon:"🧸"},
+{time:"15:00",title:"20週年巡遊派對 🎉",desc:"2026是香港迪士尼20週年！必看全新大型花車巡遊。推薦在美國小鎮大街尾端觀看，可拍花車＋城堡同框",type:"highlight",icon:"🎉"},
+{time:"16:00",title:"Duffy與好友遊玩屋",desc:"2026年3月20日起新開放！與Duffy家族近距離互動拍照",type:"activity",icon:"🧸"},
+{time:"17:00",title:"補玩 + 買紀念品",desc:"美國小鎮大街商店超好逛！20週年限定商品、Duffy系列、迪士尼耳朵",type:"activity",icon:"🎁"},
+{time:"18:30",title:"園區晚餐",desc:"選一間餐廳用餐，為煙火秀卡位做準備",type:"food",icon:"🍕"},
+{time:"20:30",title:"Momentous 星夢光影之旅 🎆",desc:"迪士尼必看壓軸！煙火＋無人機＋城堡光影投映，約20分鐘。提前30分鐘到美國小鎮大街卡位",type:"highlight",icon:"🎆"},
+{time:"21:30",title:"回飯店",desc:"迪士尼線 → 欣澳 → 東涌線到香港站 → 港島線回炮台山",type:"transport",icon:"🏠"}
+]},
+
+{date:"3/31 (二)",title:"九龍探索・市區預辦登機・回程",color:"#66BB6A",icon:"🛫",items:[
+{time:"08:30",title:"退房帶行李出發",desc:"直接帶行李去九龍站託運最方便",type:"hotel",icon:"🧳"},
+{time:"09:00",title:"九龍站・市區預辦登機 ✅",desc:"搭港鐵到九龍站（東涌線），辦理行李託運＋拿登機證。國泰 CX402（18:15起飛），起飛前90分鐘至24小時內可辦。託運完空手逛街！",type:"highlight",icon:"📦"},
+{time:"09:30",title:"備忘：攜帶護照＋八達通",desc:"進入預辦登機區時直接扣機場快線車費，之後搭機場快線去機場不會重複扣款（必須用同一張八達通）",type:"transport",icon:"⚠️"},
+{time:"10:00",title:"佐敦早午餐",desc:"佐敦站是美食寶庫！幾間都在走路範圍：",type:"food",icon:"🥛",restaurants:[
+{name:"澳洲牛奶公司",tag:"超人氣",note:"📍 白加士街47號。招牌炒蛋三文治＋燉奶，排隊名店但翻桌快"},
+{name:"麥文記麵家",tag:"米其林推薦",note:"連續五年米其林推薦，全蝦雲吞爆餡鮮彈，竹昇麵口感特別"},
+{name:"祥興記上海生煎包（尖沙咀店）",tag:"🔥 生煎包",note:"📍 尖沙咀樂道。總店！米其林推薦，底脆皮薄多汁，也有黑松露和蟹粉口味",sjb:true},
+{name:"媽咪雞蛋仔（佐敦店）",tag:"米其林推薦",note:"排隊吃一份熱騰騰的雞蛋仔當甜點"}
+]},
+{time:"11:00",title:"油麻地 / 旺角探索",desc:"廟街、女人街逛逛，感受九龍的庶民生活。旺角花園街球鞋一條街也好逛",type:"activity",icon:"🏙️"},
+{time:"12:00",title:"港式飲茶",desc:"最後一餐道地港式點心：",type:"food",icon:"🥟",restaurants:[
+{name:"一點心",tag:"平價飲茶",note:"蘿蔔糕、蟹黃燒賣、鮮蝦滑粉腸，全部都是人氣餐點"},
+{name:"坤記煲仔小菜",tag:"米其林推薦",note:"想吃煲仔飯的話，多年米其林推薦，白鱔滑雞飯必點"},
+{name:"Owl's Choux Pastry（尖沙咀店）",tag:"貓頭鷹泡芙",note:"飯後甜點！現烤泡芙＋焦糖脆殼＋鮮奶油，一吃就愛上"}
+]},
+{time:"13:30",title:"M+ 博物館 🖼️",desc:"📍 西九文化區。亞洲首間全球性當代視覺文化博物館，頂樓遠眺維港，免費入場（特展除外）",type:"highlight",icon:"🖼️"},
+{time:"15:00",title:"K11 Musea / 海港城 最後掃貨",desc:"兩大商場最後掃貨！K11 Musea結合藝術很好拍，海港城超大超好逛",type:"activity",icon:"🛍️"},
+{time:"15:45",title:"前往機場",desc:"九龍站搭機場快線（早上已辦好登機＋託運），約21分鐘直達機場",type:"transport",icon:"🚄"},
+{time:"16:15",title:"抵達機場・逛免稅店",desc:"行李已經託運，輕鬆逛免稅店！最後機會買伴手禮",type:"activity",icon:"🛒"},
+{time:"18:15",title:"回程起飛 CX402 ✈️",desc:"國泰航空 CX402，HKG → TPE，預計 20:05 抵達桃園。帶著滿滿回憶回家！",type:"transport",icon:"✈️"}
+]}
+];
+
+const TIPS=[
+{icon:"🚇",title:"交通必備",text:"買一張八達通卡（HK$150含HK$50按金），港鐵、巴士、電車、便利商店、超市都能用"},
+{icon:"📦",title:"市區預辦登機",text:"最後一天在九龍站或香港站辦理，國泰航空起飛前90分鐘至24小時可辦。需持電子護照＋機場快線車票/八達通"},
+{icon:"📱",title:"迪士尼App",text:"提前下載香港迪士尼官方App，可查看排隊時間、角色出沒時間、領取預約等候卡"},
+{icon:"💰",title:"匯率提醒",text:"港幣兌台幣約1:4.1，建議信用卡海外刷卡（注意手續費），或到市區找換店換港幣"},
+{icon:"🔌",title:"電壓插座",text:"香港使用英式三腳插座（Type G），電壓220V，記得帶轉接頭"},
+{icon:"🌦️",title:"三月天氣",text:"三月底氣溫約20-25°C，偶有毛毛雨，建議帶薄外套和雨具"}
+];
+
+const TS={
+transport:{bg:"rgba(158,158,158,0.15)",text:"#B0BEC5",border:"#78909C",label:"交通"},
+hotel:{bg:"rgba(255,183,77,0.12)",text:"#FFB74D",border:"#FFA726",label:"住宿"},
+food:{bg:"rgba(255,77,77,0.12)",text:"#FF8A80",border:"#FF5252",label:"美食"},
+activity:{bg:"rgba(77,208,225,0.12)",text:"#80DEEA",border:"#4DD0E1",label:"活動"},
+highlight:{bg:"rgba(255,215,64,0.12)",text:"#FFD740",border:"#FFC400",label:"必訪"}
+};
+
+let activeDay=0;
+
+function render(){
+  // Tabs
+  const tabs=document.getElementById('dayTabs');
+  tabs.innerHTML=DAYS.map((d,i)=>`
+    <button class="day-tab${i===activeDay?' active':''}" onclick="switchDay(${i})"
+      style="${i===activeDay?`border-color:${d.color};background:linear-gradient(180deg,${d.color}18,${d.color}08)`:''}">
+      <div class="bar" style="background:${d.color}"></div>
+      <div class="ico">${d.icon}</div>
+      <div class="label">DAY ${i+1}</div>
+      <div class="sub">${d.date}</div>
+    </button>
+  `).join('');
+
+  const day=DAYS[activeDay];
+
+  // Header
+  const hdr=document.getElementById('dayHeader');
+  hdr.style.borderLeftColor=day.color;
+  hdr.style.background=`linear-gradient(135deg,${day.color}12,transparent)`;
+  hdr.style.color=day.color;
+  hdr.textContent=day.title;
+
+  // Timeline
+  const tl=document.getElementById('timeline');
+  tl.innerHTML=day.items.map((item,idx)=>{
+    const s=TS[item.type]||TS.activity;
+    const rests=item.restaurants?item.restaurants.map(r=>`
+      <div class="rest-card${r.sjb?' sjb':''}">
+        <div class="rest-head">
+          <span class="rest-name">${r.name}</span>
+          <span class="rest-tag${r.sjb?' sjb':''}">${r.tag}</span>
+        </div>
+        <div class="rest-note">${r.note}</div>
+      </div>
+    `).join(''):'';
+    return `
+    <div class="tl-row">
+      <div class="tl-left">
+        <div class="tl-time">${item.time}</div>
+        <div class="tl-dot" style="background:${s.bg};border:1.5px solid ${s.border}40">${item.icon}</div>
+        ${idx<day.items.length-1?`<div class="tl-line" style="background:linear-gradient(180deg,${day.color}30,transparent)"></div>`:''}
+      </div>
+      <div class="tl-card" onclick="toggleCard(this)">
+        <div class="tl-card-head">
+          <div>
+            <span class="tl-badge" style="background:${s.bg};color:${s.text};border:1px solid ${s.border}30">${s.label}</span>
+            <h3>${item.title}</h3>
+          </div>
+          <span class="tl-arrow">▼</span>
+        </div>
+        <div class="tl-body">
+          <p class="tl-desc">${item.desc}</p>
+          ${rests?`<div class="rest-list">${rests}</div>`:''}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function switchDay(i){ activeDay=i; render(); window.scrollTo({top:0,behavior:'smooth'}); }
+
+function toggleCard(el){
+  const body=el.querySelector('.tl-body');
+  const arrow=el.querySelector('.tl-arrow');
+  if(body.classList.contains('hidden')){
+    body.classList.remove('hidden');
+    arrow.classList.remove('up');
+  } else {
+    body.classList.add('hidden');
+    arrow.classList.add('up');
+  }
+}
+
+// Tips
+document.getElementById('tipsGrid').innerHTML=TIPS.map(t=>`
+  <div class="tip-card">
+    <div class="ico">${t.icon}</div>
+    <div class="t">${t.title}</div>
+    <div class="d">${t.text}</div>
+  </div>
+`).join('');
+
+render();
+</script>
+</body>
+</html>
