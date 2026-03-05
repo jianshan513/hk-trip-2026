@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>一起趣香港四天三夜吧！</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans TC','Helvetica Neue',sans-serif;background:#0D1117;color:#E6E6E6;min-height:100vh;-webkit-text-size-adjust:100%;}
+.wrap{max-width:720px;margin:0 auto;}
+.hero{position:relative;padding:40px 20px 24px;background:-webkit-linear-gradient(top,#1a1a2e,#0D1117);background:linear-gradient(180deg,#1a1a2e 0%,#0D1117 100%);border-bottom:1px solid rgba(255,255,255,0.06);overflow:hidden;}
+.hero-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:3px;color:#FF4D4D;text-transform:uppercase;border-bottom:1px solid rgba(255,77,77,0.25);padding-bottom:4px;margin-bottom:12px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;color:#FAFAFA;}
+.hero h1 span{color:#FFB830;}
+.hero-meta{display:-webkit-flex;display:flex;gap:16px;margin-top:14px;-webkit-flex-wrap:wrap;flex-wrap:wrap;}
+.hero-meta div{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;gap:5px;font-size:11px;color:#8B8FA3;}
+.page-tabs{display:-webkit-flex;display:flex;gap:4px;padding:12px 12px 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+.page-tab{padding:8px 14px;border-radius:8px 8px 0 0;font-size:11px;font-weight:700;letter-spacing:0.5px;color:#555;cursor:pointer;border:none;background:transparent;font-family:inherit;-webkit-appearance:none;appearance:none;}
+.page-tab.on{color:#FFB830;background:rgba(255,184,48,0.08);border-bottom:2px solid #FFB830;}
+.page-content{display:none;}.page-content.on{display:block;}
+.tabs{display:-webkit-flex;display:flex;gap:6px;padding:16px 12px 8px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{-webkit-flex:1 0 0;flex:1 0 0;min-width:74px;padding:10px 6px 8px;border-radius:12px;border:1.5px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:#555;cursor:pointer;text-align:center;position:relative;overflow:hidden;font-family:inherit;font-size:inherit;-webkit-appearance:none;appearance:none;}
+.tab.on{color:#fff;}.tab .bar{position:absolute;top:0;left:0;right:0;height:2px;display:none;}.tab.on .bar{display:block;}
+.tab .ic{font-size:18px;margin-bottom:2px;}.tab .lb{font-size:10px;font-weight:700;letter-spacing:1px;}.tab .sb{font-size:9px;opacity:0.7;margin-top:1px;}
+.dhdr{padding:12px 16px;margin:8px 12px 0;border-radius:10px;border-left:3px solid;font-size:16px;font-weight:700;line-height:1.4;}
+.tl{padding:14px 12px 8px;}
+.row{display:-webkit-flex;display:flex;gap:10px;margin-bottom:2px;}
+.lt{display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;width:46px;-webkit-flex-shrink:0;flex-shrink:0;}
+.tm{font-size:10px;font-weight:600;color:#6B7280;margin-bottom:3px;}
+.dt{width:30px;height:30px;border-radius:8px;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;font-size:14px;-webkit-flex-shrink:0;flex-shrink:0;}
+.ln{width:1.5px;-webkit-flex:1;flex:1;min-height:6px;}
+.cd{-webkit-flex:1;flex:1;cursor:pointer;background:rgba(255,255,255,0.03);border-radius:10px;padding:10px 12px;margin-bottom:6px;border:1px solid rgba(255,255,255,0.04);}
+.cd-h{display:-webkit-flex;display:flex;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:flex-start;align-items:flex-start;}
+.bg{display:inline-block;font-size:9px;font-weight:700;padding:1px 6px 2px;border-radius:4px;margin-bottom:3px;letter-spacing:0.5px;}
+.cd h3{font-size:13px;font-weight:600;margin:2px 0 0;color:#E8E8EC;line-height:1.4;}
+.ar{font-size:8px;color:#444;margin-left:6px;margin-top:4px;-webkit-flex-shrink:0;flex-shrink:0;}
+.ar.up{-webkit-transform:rotate(-90deg);transform:rotate(-90deg);}
+.bd{display:block;}.bd.hd{display:none;}
+.ds{font-size:11px;line-height:1.6;color:#8B8FA3;margin:5px 0 0;}
+.rl{margin-top:7px;}
+.rc{background:rgba(255,255,255,0.04);border-radius:8px;padding:7px 10px;margin-bottom:5px;border-left:3px solid rgba(255,255,255,0.08);}
+.rc.sj{border-left-color:#FF6B35;}.rc.tk{border-left-color:#4DD0E1;}.rc.lo{border-left-color:#CE93D8;}
+.rh{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;gap:6px;-webkit-flex-wrap:wrap;flex-wrap:wrap;}
+.rn{font-size:11px;font-weight:700;color:#E8E8EC;}
+.rt{font-size:9px;font-weight:700;padding:1px 5px;border-radius:4px;background:rgba(255,184,48,0.15);color:#FFB830;border:1px solid rgba(255,184,48,0.2);}
+.rt.sj{background:rgba(255,107,53,0.2);color:#FF8A50;border-color:rgba(255,107,53,0.3);}
+.rt.tk{background:rgba(77,208,225,0.15);color:#4DD0E1;border-color:rgba(77,208,225,0.25);}
+.rt.lo{background:rgba(206,147,216,0.15);color:#CE93D8;border-color:rgba(206,147,216,0.25);}
+.rno{font-size:10px;color:#7B7F93;line-height:1.5;margin-top:2px;}
+.fm-region{margin:12px;padding:14px;background:rgba(255,255,255,0.03);border-radius:12px;border:1px solid rgba(255,255,255,0.05);}
+.fm-region-h{font-size:15px;font-weight:700;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.06);}
+.fm-item{padding:8px 10px;margin-bottom:6px;border-radius:8px;background:rgba(255,255,255,0.03);border-left:3px solid rgba(255,255,255,0.1);}
+.fm-item.lo{border-left-color:#CE93D8;}
+.fm-name{font-size:12px;font-weight:700;color:#E8E8EC;}
+.fm-desc{font-size:10px;color:#7B7F93;margin-top:2px;line-height:1.5;}
+.fm-branch{font-size:9px;color:#4DD0E1;margin-top:2px;line-height:1.4;}
+.tips{margin:8px 12px 16px;padding:16px 12px;background:rgba(255,255,255,0.02);border-radius:14px;border:1px solid rgba(255,255,255,0.05);}
+.tips-t{font-size:14px;font-weight:700;margin-bottom:12px;color:#FFB830;text-align:center;letter-spacing:1px;}
+.tips-g{display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;gap:8px;}
+.tc{-webkit-flex:1 1 45%;flex:1 1 45%;min-width:140px;background:rgba(255,255,255,0.03);border-radius:10px;padding:10px 9px;border:1px solid rgba(255,255,255,0.04);}
+.tc .i{font-size:18px;margin-bottom:5px;}.tc .tt{font-size:11px;font-weight:700;color:#D4D4DC;margin-bottom:2px;}.tc .td{font-size:10px;color:#6B7280;line-height:1.5;}
+.sg-item{margin:10px 12px;padding:12px;background:rgba(255,255,255,0.03);border-radius:10px;border:1px solid rgba(255,255,255,0.05);}
+.sg-title{font-size:13px;font-weight:700;color:#E8E8EC;margin-bottom:4px;}
+.sg-desc{font-size:11px;color:#8B8FA3;line-height:1.6;}
+.transit{display:inline-block;font-size:9px;padding:2px 6px;border-radius:4px;background:rgba(77,208,225,0.12);color:#4DD0E1;border:1px solid rgba(77,208,225,0.2);margin:4px 0 2px;font-weight:600;}
+.opt-badge{display:inline-block;font-size:9px;padding:2px 6px;border-radius:4px;background:rgba(255,184,48,0.1);color:#FFB830;border:1px solid rgba(255,184,48,0.15);margin-left:6px;font-weight:600;}
+.ft{text-align:center;padding:10px 20px 28px;font-size:11px;color:#3A3A4A;}
+.route-toggle{display:-webkit-flex;display:flex;gap:6px;margin:10px 12px;padding:4px;background:rgba(255,255,255,0.03);border-radius:10px;border:1px solid rgba(255,255,255,0.06);}
+.route-btn{-webkit-flex:1;flex:1;padding:8px;border-radius:8px;border:none;background:transparent;color:#666;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;-webkit-appearance:none;appearance:none;text-align:center;}
+.route-btn.on{background:rgba(102,187,106,0.15);color:#66BB6A;border:1px solid rgba(102,187,106,0.25);}
+.route-content{display:none;}.route-content.on{display:block;}
+@media(max-width:480px){.hero h1{font-size:22px;}.hero-meta{gap:8px;}.tc{-webkit-flex:1 1 100%;flex:1 1 100%;}}
+</style>
+</head>
+<body>
+<div class="hero">
+<div style="position:relative;max-width:720px;margin:0 auto;">
+<div class="hero-tag">TRIP TO HONG KONG</div>
+<h1>香港四天三夜🗺️<br><span>美食 × 景點攻略</span></h1>
+<div class="hero-meta">
+<div>📅 2026.03.28(六) — 03.31(二)</div>
+<div>✈️ 國泰 CX489 / CX402</div>
+<div>🏨 The Stellar・北角站/砲台山站</div>
+<div>🟣 在地香港人推薦店家</div>
+<div>🔀 分店資訊</div>
+</div>
+</div>
+</div>
+<div class="wrap">
+<div class="page-tabs" id="ptabs"></div>
+<div class="page-content on" id="page-itinerary">
+<div class="tabs" id="tabs"></div>
+<div class="dhdr" id="dhdr"></div>
+<div id="route-toggle-area"></div>
+<div class="tl" id="tl"></div>
+</div>
+<div class="page-content" id="page-foodmap">
+<div style="padding:16px 12px 8px;"><div style="font-size:16px;font-weight:700;color:#FFB830;text-align:center;">📍 美食地圖（按區域）</div><div style="font-size:10px;color:#666;text-align:center;margin-top:4px;">到了某一區，翻開看附近有什麼好吃的！所有餐廳都是彈性選擇，看心情決定<br>🔀 = 其他區也有分店</div></div>
+<div id="foodmap"></div>
+</div>
+<div class="page-content" id="page-guide">
+<div style="padding:16px 12px 8px;"><div style="font-size:16px;font-weight:700;color:#FFB830;text-align:center;">📌香港生存指南🇭🇰</div><div style="font-size:10px;color:#666;text-align:center;margin-top:4px;">第一次去香港必知的眉角</div></div>
+<div id="guide"></div>
+</div>
+<div class="tips">
+<div class="tips-t">🪧行前小提醒</div>
+<div class="tips-g" id="tg"></div>
+</div>
+<div class="ft">17趣🇭🇰✨</div>
+</div>
+
+<script>
+var PAGES=["行程","美食地圖","🇭🇰Tips"];
+var PAGE_IDS=["page-itinerary","page-foodmap","page-guide"];
+var curPage=0;
+
+var DAYS=[
+// ===== DAY 1 =====
+{"date":"3/28 (六)","title":"抵達香港・叮叮車探險・怪獸大廈・維港夜景","color":"#FF4D4D","icon":"✈️","items":[
+{"time":"10:45","title":"桃園機場出發","desc":"國泰航空 CX489，TPE → HKG","type":"transport","icon":"✈️"},
+{"time":"13:00","title":"抵達香港國際機場","desc":"入境後前往北角飯店。建議搭 A11 巴士直達北角，省去轉車過月台的體力。","type":"transport","icon":"🚄","rr":[
+{"n":"機場巴士 A11","t":"🚌 直達北角","d":"HK$40，車程約 70 分鐘，可坐上層看海。","s":0,"k":"tk"},
+{"n":"機場快線","t":"🚄 最快","d":"到香港站轉港島線至北角。","s":0,"k":"tk"}
+]},
+{"time":"14:30","title":"Check-in The Stellar Hotel","desc":"📍 北角春秧街 68 號。放好行李，飯店樓下就是最精采的市場。","type":"hotel","icon":"🏨"},
+{"time":"15:00","title":"春秧街市集＋北角下午茶","desc":"感受電車穿過市場的震撼。先在飯店附近吃一圈：","type":"food","icon":"🥚","rr":[
+{"n":"麥記美食","t":"🔥 生煎包","d":"北角米其林小店，傳統厚皮生煎包，就在飯店附近","s":1},
+{"n":"半島冰室","t":"🟣 奶茶蛋撻","d":"📍 北角。港式冰室，蛋撻和奶茶水準很高。","s":0,"k":"lo"},
+{"n":"人人和平小飯店","t":"📍 北角。港式小炒名店，就在附近。","s":0,"k":"lo"}
+]},
+{"time":"15:50","title":"叮叮車大冒險：北角 → 筲箕灣","desc":"跳上往「筲箕灣」的電車坐到底站，這是拍北角街景的最強視角。","type":"transport","icon":"🚃","transit":"北角 → 筲箕灣 (電車約 25 分鐘)"},
+{"time":"16:20","title":"筲箕灣：低調高手朝聖","desc":"底站下車即達。買完雞蛋仔直接衝港鐵回頭去拍怪獸大廈：","type":"food","icon":"🥚","rr":[
+{"n":"低調高手大街小食","t":"🟣 雞蛋仔天花板","d":"📍 筲箕灣總店。必點：鹹蛋黃雞蛋仔。帶著去怪獸大廈排隊吃！🔀 銅鑼灣信德街也有分店","s":1,"k":"lo"}
+]},
+{"time":"16:50","title":"太古站 → 怪獸大廈打卡","desc":"趕在日落前 1.5 小時抵達，這時天井光線最均勻，手機拍起來畫質最好。","type":"activity","icon":"📸","transit":"筲箕灣 → 太古 (港鐵 2 站，4 分鐘)","rr":[
+{"n":"怪獸大廈 (Monster Building)","t":"📸 晨昏黃金拍點","d":"📍 太古英皇道 1046 號。仰拍天井最有電影感。","s":0}
+]},
+{"time":"17:45","title":"銅鑼灣美食三連擊","desc":"回到鬧區。這三間在同一個路口，建議分頭排隊：","type":"food","icon":"🍜","transit":"太古 → 銅鑼灣 (港鐵 3 站，6 分鐘)","rr":[
+{"n":"何洪記粥麵專家","t":"⭐ 米其林一星","d":"📍 希慎廣場 12F。必點：乾炒牛河、鮮蝦雲吞麵。","s":0},
+{"n":"Bakehouse","t":"🥧 酸種蛋撻","d":"📍 啟超道 16 號。酥皮控必朝聖。🔀 中環/尖沙咀/灣仔/東涌都有分店","s":0},
+{"n":"霸王茶姬","t":"🧋 飲料補給","d":"📍 銅鑼灣 Fashion Walk。","s":0}
+]},
+{"time":"19:30","title":"尖沙咀 → 維多利亞港夜景","desc":"從銅鑼灣坐港鐵過海，體驗經典香港夜色。","type":"highlight","icon":"🌃","transit":"銅鑼灣 → 尖沙咀 (約 10 分鐘)","rr":[
+{"n":"天星小輪","t":"🚢 必搭","d":"尖沙咀往返中環/灣仔，看維港最美角度。","s":0,"k":"tk"}
+]},
+{"time":"21:30","title":"宵夜＋回飯店","desc":"回程順路吃宵夜，或帶回飯店吃。","type":"food","icon":"🌙","transit":"尖沙咀 → 北角 (約 20 分鐘)","rr":[
+{"n":"興記煲仔飯","t":"🟣 廟街名店","d":"點不同口味分享，熱騰騰的鍋巴最讚。","s":0,"k":"lo"}
+]}
+]},
+// ===== DAY 2 =====
+{"date":"3/29 (日)","title":"中環上環美食巡禮・太平山・灣仔","color":"#FFB830","icon":"🏔️","items":[
+{"time":"10:00","title":"睡到自然醒・早午餐","desc":"這天要爬坡，建議在飯店附近或灣仔先吃飽：","type":"food","icon":"🍳","rr":[
+{"n":"華星冰室（灣仔店）","t":"明星愛店","d":"就在港鐵站附近。黑松露炒蛋多士＋凍鴛鴦奶茶。","s":0},
+{"n":"飯店周邊美食","t":"懶人首選","d":"直接吃北角半島冰室或人人和平，吃飽直接坐地鐵去中環。","s":0}
+]},
+{"time":"11:00","title":"中環手扶梯 → 大館 → 嘉咸街壁畫","desc":"★省力技巧：務必利用「半山手扶梯」一路往上搭，千萬別自己爬。到大館拍完照，再『往下』走去嘉咸街壁畫。","type":"highlight","icon":"🏛️","transit":"北角 → 中環 (約 12 分鐘)"},
+{"time":"12:00","title":"中環午餐：斜坡上的戰場","desc":"這幾間都在斜坡巷弄，分頭買再集合吃：","type":"food","icon":"🦆","rr":[
+{"n":"九記牛腩","t":"🟣 必吃崩沙腩","d":"📍 歌賦街。★省力走法：從手扶梯搭到『荷李活道』站再走過去，全是平路。","s":0,"k":"lo"},
+{"n":"祥興記上海生煎包","t":"🔥 米芝蓮推薦","d":"📍 擺花街（很斜）。皮薄爆汁，適合站在路邊快速消滅。","s":1},
+{"n":"沾仔記","t":"雲吞麵","d":"📍 威靈頓街。就在坡底，不想爬坡的人先去這家佔位。","s":0}
+]},
+{"time":"13:00","title":"甜點＋上環漫步 (一路向下)","desc":"從九記牛腩順著坡『往下走』去上環，這樣最輕鬆：","type":"food","icon":"🥧","rr":[
+{"n":"泰昌蛋撻 / 蘭芳園","t":"經典老字號","d":"都在手扶梯旁。泰昌酥皮 vs 蘭芳園絲襪奶茶。","s":0},
+{"n":"Bakehouse（中環店）","t":"🥧 酸種蛋撻","d":"📍 士丹頓街5號，就在手扶梯旁！Day 1銅鑼灣沒買夠的話這裡補。","s":0},
+{"n":"嘉多娜餅屋","t":"🟣 布丁蛋撻","d":"📍 上環店。蛋撻控必比拼這家跟 Bakehouse 的差異。","s":0,"k":"lo"},
+{"n":"文武廟 / PMQ","t":"📸 接拍勝地","d":"上環文武廟天花板的螺旋香很有名，適合拍照。","s":0}
+]},
+{"time":"15:00","title":"太平山頂 🏔️","desc":"三月底 18:20 日落，建議 16:00 前到纜車站排隊，可以看到夕陽＋百萬夜景。","type":"highlight","icon":"🏔️","transit":"中環站 J2 出口步行至纜車站約 10-15 分鐘 (也是緩坡)","rr":[
+{"n":"山頂纜車套票","t":"🎫 必買","d":"建議先在 Klook 買好。坐右側窗邊風景較好。","s":0,"k":"tk"},
+{"n":"15 號巴士","t":"🚌 備選","d":"中環碼頭/交易廣場搭乘。如果不排纜車，這路巴士風景也很驚人。","s":0,"k":"tk"}
+]},
+{"time":"19:00","title":"灣仔晚餐：燒臘與蛋撻","desc":"下山後坐港鐵或叮叮車去灣仔吃好料：","type":"food","icon":"🍖","transit":"中環 → 灣仔 (港鐵 1 站)","rr":[
+{"n":"甘牌燒鵝","t":"⭐ 米其林一星","d":"📍 皇后大道東。下庄燒鵝必點。排隊人多可考慮外帶。","s":0},
+{"n":"再興燒臘飯店","t":"🟣 CNN叉燒之王","d":"📍 軒尼詩道265號。叉燒是招牌！三寶飯一次滿足。米其林推介。","s":0,"k":"lo"},
+{"n":"薔紅餐廳","t":"🟣 招牌炸子雞","d":"📍 灣仔。這家是隱藏版強者，炸子雞皮脆肉嫩。","s":0,"k":"lo"},
+{"n":"Hashtag B","t":"🥧 花朵蛋撻","d":"📍 灣仔。如果這時還有貨，一定要買一個試試！","s":0}
+]},
+{"time":"21:00","title":"宵夜甜品＋回飯店","desc":"回北角很近，最後一碗糖水收尾：","type":"food","icon":"🌙","transit":"灣仔 → 北角 (港鐵 6 分鐘)","rr":[
+{"n":"義順牛奶公司","t":"雙皮奶","d":"📍 銅鑼灣駱克道506號（目前香港僅存此店）。燉奶超滑順。","s":0},
+{"n":"福元湯圓","t":"🟣 北角最強","d":"回飯店後如果還有力氣，走 7 分鐘去吃薑汁湯圓。","s":0,"k":"lo"}
+]}
+]},
+// ===== DAY 3 =====
+{"date":"3/30 (一)","title":"香港迪士尼樂園・20週年慶典","color":"#4DD0E1","icon":"🏰","items":[
+{"time":"07:30","title":"早起出發去迪士尼！","desc":"今天唯一要早起的一天！為了 09:00 提早入園：","type":"transport","icon":"🚇","rr":[
+{"n":"交通建議","t":"🚇 港鐵 vs 🚕 計程車","d":"港鐵約 55 分鐘；計程車約 HK$300，可以多睡半小時且直達門口。","s":0}
+]},
+{"time":"09:00","title":"提早入園：直衝魔雪奇緣！","desc":"利用『提早入園證』，在一般遊客進場前一小時搶先體驗 Frozen 園區設施。","type":"highlight","icon":"❄️","rr":[
+{"n":"優先體驗項目","t":"❄️ World of Frozen","d":"魔雪奇幻之旅、雪嶺滑雪橇。此時排隊最短，拍空景最美。","s":1},
+{"n":"門票預約提醒","t":"🎫 重要！","d":"購票後務必上官網預約入園日期。","s":0}
+]},
+{"time":"上午/下午","title":"必玩推薦項目 (自由安排)","desc":"除了新園區，這幾項也是香港迪士尼的精華，請根據 App 排隊時間隨意遊玩：","type":"activity","icon":"🚀","rr":[
+{"n":"灰熊山極速礦車","t":"🐻 必玩過山車","d":"香港限定，會有驚喜倒退行駛，推薦必坐！","s":0},
+{"n":"迷離大宅","t":"🎨 奇幻體驗","d":"香港獨有設施，無軌車系統加上精采聲光特效。","s":0},
+{"n":"反斗奇兵大本營","t":"🚀 打卡聖地","d":"沖天遙控車、轉轉彈弓狗，色彩豐富超好拍。","s":0},
+{"n":"明日世界","t":"🦸 漫威系列","d":"鐵甲奇俠飛行之旅、蟻俠與黃蜂女：擊戰特攻！","s":0}
+]},
+{"time":"15:00","title":"20週年巡遊派對 🎉","desc":"全新花車巡遊。建議提前 20 分鐘到美國小鎮大街卡位，可拍到花車與城堡同框。","type":"highlight","icon":"🎉"},
+{"time":"傍晚時分","title":"下午茶與紀念品採買","desc":"這時體力稍降，適合休息或與 Duffy 好友見面：","type":"food","icon":"🧸","rr":[
+{"n":"Duffy與好友遊玩屋","t":"🧸 3/20 新開放","d":"進入互動空間與熱門角色見面拍照。","s":0},
+{"n":"20週年限定品","t":"🎁 美國小鎮大街","d":"趁晚上看煙火人潮擁擠前，先挑好伴手禮。","s":0},
+{"n":"阿德爾皇家宴會廳","t":"🍔 園區晚餐","d":"建議在園區吃飽再看煙火，推冰雪奇緣主題餐點。","s":0}
+]},
+{"time":"20:30","title":"Momentous 星夢光影之旅 🎆","desc":"全天高潮！煙火＋無人機＋城堡投影匯演，約 20 分鐘。建議提前 45 分鐘在城堡前廣場找好位置。","type":"highlight","icon":"🎆"},
+{"time":"21:30","title":"回程與暖心宵夜","desc":"回北角約 1 小時。到飯店後走幾步路吃碗甜品最消疲勞：","type":"transport","icon":"🏠","transit":"迪士尼線 → 欣澳 → 香港站 → 北角","rr":[
+{"n":"福元湯圓","t":"🟣 深夜慰藉","d":"就在飯店附近。推『薑汁雙併湯圓』，手工皮薄流沙內餡，溫潤暖胃。","s":0,"k":"lo"},
+{"n":"便利商店","t":"快速補給","d":"北角站附近的 7-11 有各種杯麵零食，帶回飯店 share 也行。","s":0}
+]}
+]},
+// ===== DAY 4 =====
+{"date":"3/31 (二)","title":"最後巡禮・買蛋撻回家","color":"#66BB6A","icon":"🛫","items":[],"hasRoutes":true}
+];
+
+var DAY4_A=[
+{"time":"10:00","title":"退房出發","desc":"10:00-11:00退房皆可，時間充裕不用趕","type":"hotel","icon":"🧳"},
+{"time":"10:30","title":"佐敦早午餐","desc":"以下隨意選，有空再吃：","type":"food","icon":"🥛","transit":"北角→佐敦（港鐵約25分鐘）","rr":[
+{"n":"澳洲牛奶公司","t":"🟣 超人氣","d":"📍 白加士街47號。必點：炒蛋多士＋燉奶。提醒：先跟服務員說是台灣人。在地人","s":0,"k":"lo"},
+{"n":"嘉多娜餅屋","t":"🟣 布丁蛋撻","d":"📍 佐敦白加士街。Day 2沒吃到的話這裡補。","s":0,"k":"lo"},
+{"n":"茶痴","t":"🟣 檸檬茶","d":"必點：凍檸茶。據說是全港最好喝的檸檬茶之一。推薦：在地人","s":0,"k":"lo"}
+]},
+{"time":"12:00","title":"旺角掃街","desc":"掃街模式，有空再吃：","type":"food","icon":"🏙️","transit":"佐敦→旺角（港鐵1站，3分鐘或步行15分鐘）","rr":[
+{"n":"肥姐小食","t":"🟣 港式滷味必吃","d":"📍 旺角。必點：大生腸、豬舌頭、墨魚、雞腎。在地人","s":0,"k":"lo"},
+{"n":"華姐清湯腩","t":"🟣 清湯牛腩粉","d":"清湯牛腩招牌，湯底清甜牛腩軟爛。","s":0,"k":"lo"},
+{"n":"低調高手大街小食","t":"🟣 雞蛋仔","d":"📍 旺角。雞蛋仔控必試，現做現吃。","s":0,"k":"lo"},
+{"n":"榕哥陳皮燒鵝（砵蘭街店）","t":"🟣 燒鵝","d":"陳皮味燒鵝很特別，半隻share。推薦：在地人","s":0,"k":"lo"},
+{"n":"金飯館2.0","t":"🟣 炒飯神店","d":"📍 旺角。出餐不快但好吃。可以點幾種炒飯share。推薦：在地人","s":0,"k":"lo"}
+]},
+{"time":"14:00","title":"最後買蛋撻","desc":"回購前幾天最愛的蛋撻帶回台灣（常溫可放1-2天，密封袋裝好）。Bakehouse可WhatsApp預訂24個以上。","type":"activity","icon":"🥧"},
+{"time":"15:00","title":"前往機場","desc":"","type":"transport","icon":"🚄","transit":"九龍站機場快線→機場（21分鐘）","rr":[
+{"n":"九龍站預辦登機（推薦）","t":"✅ 託運行李","d":"國泰CX402（18:15起飛），起飛前90分到24小時可辦。護照＋八達通","s":0,"k":"tk"},
+{"n":"機場巴士 A21","t":"🚌 HK$33","d":"尖沙咀到機場約60-75分鐘，可用八達通","s":0,"k":"tk"}
+]},
+{"time":"16:15","title":"機場免稅店","desc":"行李已託運，輕鬆逛！機場也有Bakehouse（近28號登機閘口禁區內）","type":"activity","icon":"🛒"},
+{"time":"18:15","title":"回程 CX402 ✈️","desc":"國泰航空 HKG→TPE，預計20:05抵達桃園！","type":"transport","icon":"✈️"}
+];
+
+var DAY4_B=[
+{"time":"10:00","title":"退房出發","desc":"10:00-11:00退房皆可，時間充裕","type":"hotel","icon":"🧳"},
+{"time":"10:30","title":"九龍站預辦登機＋託運行李","desc":"先把行李搞定再輕鬆逛街！國泰CX402（18:15起飛），起飛前90分到24小時可辦","type":"highlight","icon":"📦","transit":"北角→九龍站（港鐵約20分鐘）"},
+{"time":"11:00","title":"搭東涌線去Outlet","desc":"","type":"transport","icon":"🚇","transit":"九龍站→東涌站（東涌線，30分鐘）"},
+{"time":"11:30","title":"東薈城Outlet Shopping 🛍️","desc":"品牌包括：Adidas、Nike、Coach、Kate Spade、Levi's等。Outlet價再打折，很好買！3.5小時慢慢逛","type":"activity","icon":"🛍️","rr":[
+{"n":"東薈城名店倉","t":"Outlet購物","d":"📍 東涌達東路20號。B1-2樓超過80個品牌。美食廣場也有很多選擇","s":0},
+{"n":"Bakehouse（東涌店）","t":"🥧 蛋撻伴手禮","d":"📍 東薈城G19號舖。逛街順便買蛋撻帶上飛機！","s":0}
+]},
+{"time":"15:00","title":"前往機場","desc":"","type":"transport","icon":"🚄","transit":"東涌→機場（S1巴士10分鐘或計程車HK$40）"},
+{"time":"16:15","title":"機場免稅店","desc":"最後掃貨！機場也有Bakehouse可以買蛋撻（近28號登機閘口禁區內）","type":"activity","icon":"🛒"},
+{"time":"18:15","title":"回程 CX402 ✈️","desc":"國泰航空 HKG→TPE，預計20:05抵達桃園！","type":"transport","icon":"✈️"}
+];
+
+var FOOD_MAP=[
+{"region":"北角 North Point","color":"#FF4D4D","items":[
+{"n":"麥記美食","d":"🔥 生煎包｜米其林小店，傳統厚皮生煎包","lo":false},
+{"n":"媽咪雞蛋仔","d":"米其林推薦｜外酥內軟，連續五年推薦","lo":false},
+{"n":"半島冰室","d":"🟣 港式冰室｜蛋撻和奶茶都有水準","lo":true},
+{"n":"人人和平小飯店","d":"🟣 港式小炒｜share超適合","lo":true},
+{"n":"福元湯圓","d":"🟣 宵夜糖水｜70+款手工湯圓，薑汁雙併推薦（炮台山方向步行10分鐘）","lo":true}
+]},
+{"region":"筲箕灣 Shau Kei Wan","color":"#FF4D4D","items":[
+{"n":"低調高手大街小食（總店）","d":"🟣 雞蛋仔天花板｜東大街76A號。必點鹹蛋黃雞蛋仔。謝霆鋒、周潤發都來吃過","lo":true,"br":"🔀 分店：銅鑼灣信德街｜鰂魚涌｜寶琳"}
+]},
+{"region":"銅鑼灣 Causeway Bay","color":"#FF4D4D","items":[
+{"n":"何洪記粥麵專家","d":"⭐ 米其林一星｜希慎廣場12F。必點：乾炒牛河、鮮蝦雲吞麵","lo":false},
+{"n":"Bakehouse（銅鑼灣店）","d":"🥧 酸種蛋撻｜啟超道16號（希慎對面）。HK$12","lo":false,"br":"🔀 分店：中環士丹頓街｜尖沙咀漢口道｜灣仔｜東涌｜機場"},
+{"n":"霸王茶姬","d":"🧋 東方茶飲｜Fashion Walk。伯牙絕弦是招牌","lo":false},
+{"n":"低調高手大街小食（銅鑼灣店）","d":"🟣 雞蛋仔｜信德街，維園對面營多超市內。筲箕灣總店分店","lo":true},
+{"n":"義順牛奶公司","d":"雙皮燉奶｜駱克道506號。香港目前僅存此店！必點薑汁燉鮮奶","lo":false}
+]},
+{"region":"中環/上環 Central/Sheung Wan","color":"#FFB830","items":[
+{"n":"九記牛腩","d":"🟣 崩沙牛腩｜歌賦街21號。清湯＋咖哩牛腩必點","lo":true},
+{"n":"祥興記上海生煎包","d":"🔥 生煎包｜擺花街。米其林推薦","lo":false},
+{"n":"沾仔記","d":"雲吞麵｜威靈頓街。三寶麵一次滿足","lo":false},
+{"n":"泰昌蛋撻","d":"60年老店｜擺花街。傳統酥皮蛋撻","lo":false},
+{"n":"蘭芳園","d":"絲襪奶茶始祖｜結志街。1952年開業，凍奶茶必點","lo":false},
+{"n":"Bakehouse（中環店）","d":"🥧 酸種蛋撻｜士丹頓街5號，手扶梯旁邊，排隊較短","lo":false},
+{"n":"嘉多娜餅屋","d":"🟣 布丁蛋撻｜蛋撻用布丁方式做","lo":true,"br":"🔀 佐敦白加士街也有分店"}
+]},
+{"region":"灣仔 Wan Chai","color":"#FFB830","items":[
+{"n":"甘牌燒鵝","d":"⭐ 米其林一星｜皇后大道東18號。下庄燒鵝＋叉燒","lo":false},
+{"n":"再興燒臘飯店","d":"🟣 CNN叉燒之王｜軒尼詩道265號。米其林推介，三寶飯必點","lo":true},
+{"n":"Hashtag B","d":"🥧 拿破崙蛋撻｜千層花朵造型，適合當伴手禮","lo":false},
+{"n":"薔紅餐廳","d":"🟣 炸子雞｜share一隻剛好","lo":true},
+{"n":"華星冰室","d":"明星愛店｜黑松露炒蛋多士＋凍鴛鴦奶茶","lo":false}
+]},
+{"region":"尖沙咀 Tsim Sha Tsui","color":"#FFB830","items":[
+{"n":"Bakehouse（尖沙咀店）","d":"🥧 酸種蛋撻｜漢口道44號。人氣最旺分店，可能要排30分鐘","lo":false},
+{"n":"媽咪雞蛋仔","d":"米其林推薦｜尖沙咀有分店，外酥內軟的經典雞蛋仔","lo":false}
+]},
+{"region":"佐敦 Jordan","color":"#66BB6A","items":[
+{"n":"澳洲牛奶公司","d":"🟣 超人氣｜白加士街47號。炒蛋多士＋燉奶","lo":true},
+{"n":"嘉多娜餅屋","d":"🟣 布丁蛋撻｜白加士街分店","lo":true},
+{"n":"茶痴","d":"🟣 凍檸茶｜全港最好喝的檸檬茶之一","lo":true}
+]},
+{"region":"旺角 Mong Kok","color":"#66BB6A","items":[
+{"n":"肥姐小食","d":"🟣 港式滷味｜大生腸、豬舌頭、墨魚","lo":true},
+{"n":"華姐清湯腩","d":"🟣 清湯牛腩粉｜湯底清甜牛腩軟爛","lo":true},
+{"n":"低調高手大街小食","d":"🟣 雞蛋仔｜雞蛋仔控必試","lo":true},
+{"n":"榕哥陳皮燒鵝","d":"🟣 陳皮燒鵝｜砵蘭街，點半隻share","lo":true},
+{"n":"金飯館2.0","d":"🟣 炒飯神店｜出餐不快但好吃","lo":true},
+{"n":"金華冰廳","d":"全港第一菠蘿油｜太子站附近。酥脆麵包搭厚切奶油，傳奇老店","lo":false}
+]},
+{"region":"廟街/油麻地 Temple Street","color":"#66BB6A","items":[
+{"n":"興記煲仔飯","d":"🟣 宵夜必吃｜排骨煲仔飯、臘味煲仔飯，營業到深夜","lo":true}
+]},
+{"region":"東涌 Tung Chung（方案B）","color":"#66BB6A","items":[
+{"n":"東薈城名店倉","d":"🛍️ Outlet｜達東路20號。80+品牌，Outlet價再打折","lo":false},
+{"n":"Bakehouse（東涌店）","d":"🥧 酸種蛋撻｜東薈城G19號舖。逛完Outlet順便帶蛋撻上飛機","lo":false}
+]}
+];
+
+var GUIDE=[
+{"t":"🍵 茶水洗碗筷","d":"港式餐廳入座後，會有一壺熱茶和碗。用熱茶沖洗碗筷杯子是本地習慣，茶水倒到桌上的盆裡。"},
+{"t":"🚌 巴士上車嗶八達通","d":"上車時刷八達通，下車不用再刷（跟台灣公車不同）。雙層巴士坐上層看風景！"},
+{"t":"🏢 樓層從G開始算","d":"G=地面層（台灣1F），1樓=台灣2F。所以「3樓」其實是台灣的4F。"},
+{"t":"⚡ 扶手電梯超快","d":"香港扶手電梯速度是台灣的1.5-2倍，站上去時要抓穩。站右邊，左邊讓人走。"},
+{"t":"💰 港幣匯率","d":"HK$1 ≈ NT$4.1（2026年3月）。建議到港後用八達通為主，現金備HK$500-1000零用。"},
+{"t":"🍽️ 餐廳速度很快","d":"港式餐廳節奏快，點餐、吃飯、結帳都快。尖峰時段可能被拼桌。"},
+{"t":"🛜 免費WiFi","d":"港鐵站和大型商場有免費WiFi（Wi-Fi.HK）。建議還是買eSIM比較方便。"},
+{"t":"🧳 市區預辦登機","d":"機場快綫香港站及九龍站可提前託運行李＋拿登機證。國泰起飛前90分到24小時可辦。搞定後輕鬆玩！"},
+{"t":"🚇 交通必備","d":"買八達通卡（租用版HK$200含HK$50按金＋HK$150儲值），港鐵/巴士/電車/便利商店/天星小輪都能用"},
+{"t":"📱 迪士尼App","d":"提前下載查排隊時間，提早入園QRCode記得先截圖下來！"}
+];
+
+var TIPS=[
+{"i":"👟","t":"舒適好走的鞋","d":"四天都在暴走＋爬坡，穿一雙走過的運動鞋或厚底鞋。香港路不平又多斜坡，新鞋會磨腳！"},
+{"i":"🎒","t":"穿搭與天氣","d":"三月底香港約 18-24°C，白天短袖/薄長袖OK，早晚加件薄外套。迪士尼那天可能走到熱，帶件好脫的。室內冷氣偏強！"},
+{"i":"🪪","t":"護照港簽","d":"喂喂喂記得帶、印，否則你要自己改機票囉"},
+{"i":"💰","t":"港幣匯率","d":"HK$1 ≈ NT$4.1，可以換HK$500-1500零用，基本上都會使用八達通"},
+{"i":"🔌","t":"三腳插座","d":"香港用英式三腳方型插頭（BF型），記得帶轉接頭！電壓220V！！！"},
+{"i":"💊","t":"隨身藥品","d":"腸胃藥必帶！四天狂吃很容易拉肚子。有個人用藥也記得帶。OK繃也建議備幾片"},
+{"i":"📱","t":"eSIM上網","d":"出發前先買好香港eSIM裝上，一落地就有網路查地圖、叫車。Klook或KKday都有賣"},
+{"i":"🧳","t":"行李限額","d":"國泰經濟艙：託運23kg/件、手提7kg。去程行李箱留空間，回程蛋撻伴手禮會爆買！"}
+];
+
+var TS={"transport":{"bg":"rgba(158,158,158,0.15)","tx":"#B0BEC5","bd":"#78909C","lb":"交通"},"hotel":{"bg":"rgba(255,183,77,0.12)","tx":"#FFB74D","bd":"#FFA726","lb":"住宿"},"food":{"bg":"rgba(255,77,77,0.12)","tx":"#FF8A80","bd":"#FF5252","lb":"美食"},"activity":{"bg":"rgba(77,208,225,0.12)","tx":"#80DEEA","bd":"#4DD0E1","lb":"活動"},"highlight":{"bg":"rgba(255,215,64,0.12)","tx":"#FFD740","bd":"#FFC400","lb":"必訪"}};
+var cur=0;
+var curRoute="A";
+
+function esc(s){var d=document.createElement("div");d.appendChild(document.createTextNode(s));return d.innerHTML;}
+
+function drawPageTabs(){
+var h="";
+for(var i=0;i<PAGES.length;i++){
+h+='<button class="page-tab'+(i===curPage?' on':'')+'" onclick="goPage('+i+')">'+PAGES[i]+'</button>';
+}
+document.getElementById("ptabs").innerHTML=h;
+}
+
+function goPage(i){
+curPage=i;
+drawPageTabs();
+for(var j=0;j<PAGE_IDS.length;j++){
+document.getElementById(PAGE_IDS[j]).className="page-content"+(j===i?" on":"");
+}
+}
+
+function draw(){
+var i,h,day=DAYS[cur],s,item,r,j;
+h="";
+for(i=0;i<DAYS.length;i++){var d=DAYS[i],a=i===cur;h+='<button class="tab'+(a?' on':'')+'" onclick="go('+i+')" style="'+(a?'border-color:'+d.color+';background:linear-gradient(180deg,'+d.color+'18,'+d.color+'08);':'')+'"><div class="bar" style="background:'+d.color+'"></div><div class="ic">'+d.icon+'</div><div class="lb">DAY '+(i+1)+'</div><div class="sb">'+d.date+'</div></button>';}
+document.getElementById("tabs").innerHTML=h;
+
+var hdr=document.getElementById("dhdr");
+hdr.style.borderLeftColor=day.color;hdr.style.background="linear-gradient(135deg,"+day.color+"12,transparent)";hdr.style.color=day.color;hdr.innerHTML=esc(day.title);
+
+var rta=document.getElementById("route-toggle-area");
+if(day.hasRoutes){
+rta.innerHTML='<div class="route-toggle"><button class="route-btn'+(curRoute==="A"?" on":"")+'" onclick="setRoute(\'A\')">方案A：九龍掃街</button><button class="route-btn'+(curRoute==="B"?" on":"")+'" onclick="setRoute(\'B\')">方案B：東涌Outlet</button></div>';
+}else{
+rta.innerHTML="";
+}
+
+var items=day.hasRoutes?(curRoute==="A"?DAY4_A:DAY4_B):day.items;
+
+h="";
+for(i=0;i<items.length;i++){
+item=items[i];s=TS[item.type]||TS.activity;
+var rests="";
+if(item.transit){
+rests+='<div class="transit">'+esc(item.transit)+'</div>';
+}
+if(item.rr){for(j=0;j<item.rr.length;j++){r=item.rr[j];var cls=r.s?"sj":(r.k==="tk"?"tk":(r.k==="lo"?"lo":""));rests+='<div class="rc'+(cls?' '+cls:'')+'"><div class="rh"><span class="rn">'+esc(r.n)+'</span><span class="rt'+(cls?' '+cls:'')+'">'+esc(r.t)+'</span></div><div class="rno">'+esc(r.d)+'</div></div>';}}
+
+var foodNote="";
+if(item.type==="food"){foodNote='<span class="opt-badge">隨意選吃</span>';}
+
+h+='<div class="row"><div class="lt"><div class="tm">'+item.time+'</div><div class="dt" style="background:'+s.bg+';border:1.5px solid '+s.bd+'40">'+item.icon+'</div>'+(i<items.length-1?'<div class="ln" style="background:linear-gradient(180deg,'+day.color+'30,transparent)"></div>':'')+'</div><div class="cd" onclick="tog(this)"><div class="cd-h"><div><span class="bg" style="background:'+s.bg+';color:'+s.tx+';border:1px solid '+s.bd+'30">'+s.lb+'</span>'+foodNote+'<h3>'+esc(item.title)+'</h3></div><span class="ar">▼</span></div><div class="bd"><p class="ds">'+esc(item.desc)+'</p>'+(rests?'<div class="rl">'+rests+'</div>':'')+'</div></div></div>';
+}
+document.getElementById("tl").innerHTML=h;
+}
+
+function go(i){cur=i;draw();window.scrollTo(0,0);}
+function setRoute(r){curRoute=r;draw();}
+function tog(el){var bd=el.getElementsByClassName("bd")[0];var ar=el.getElementsByClassName("ar")[0];if(bd.className.indexOf("hd")>=0){bd.className="bd";ar.className="ar";}else{bd.className="bd hd";ar.className="ar up";}}
+
+function drawFoodMap(){
+var h="";
+for(var i=0;i<FOOD_MAP.length;i++){
+var fm=FOOD_MAP[i];
+h+='<div class="fm-region"><div class="fm-region-h" style="color:'+fm.color+'">'+esc(fm.region)+'</div>';
+for(var j=0;j<fm.items.length;j++){
+var it=fm.items[j];
+h+='<div class="fm-item'+(it.lo?' lo':'')+'"><div class="fm-name">'+(it.lo?'🟣 ':'')+esc(it.n)+'</div><div class="fm-desc">'+esc(it.d)+'</div>';
+if(it.br){h+='<div class="fm-branch">'+esc(it.br)+'</div>';}
+h+='</div>';
+}
+h+='</div>';
+}
+document.getElementById("foodmap").innerHTML=h;
+}
+
+function drawGuide(){
+var h="";
+for(var i=0;i<GUIDE.length;i++){
+var g=GUIDE[i];
+h+='<div class="sg-item"><div class="sg-title">'+esc(g.t)+'</div><div class="sg-desc">'+esc(g.d)+'</div></div>';
+}
+document.getElementById("guide").innerHTML=h;
+}
+
+var tg="",tp;
+for(var k=0;k<TIPS.length;k++){tp=TIPS[k];tg+='<div class="tc"><div class="i">'+tp.i+'</div><div class="tt">'+esc(tp.t)+'</div><div class="td">'+esc(tp.d)+'</div></div>';}
+document.getElementById("tg").innerHTML=tg;
+
+drawPageTabs();
+draw();
+drawFoodMap();
+drawGuide();
+</script>
+</body>
+</html>
